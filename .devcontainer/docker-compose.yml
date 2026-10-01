@@ -1,0 +1,11 @@
+services:
+  dev:
+    image: mcr.microsoft.com/devcontainers/base:ubuntu
+    command: sleep infinity
+    network_mode: service:db
+    env_file: .env
+    volumes:
+      - .:/workspaces/project:cached
+    depends_on:
+      db:
+        condition: service_healthy

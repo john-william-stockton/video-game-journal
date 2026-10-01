@@ -1,0 +1,25 @@
+# Secrets
+.env
+
+# Java / Maven build output
+api/target/
+
+# IDEs
+.idea/
+*.iml
+.vscode/*
+!.vscode/launch.json
+.classpath
+.project
+.settings/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node / UI
+ui/node_modules/
+ui/dist/

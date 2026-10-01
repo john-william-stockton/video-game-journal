@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "API: Spring Boot",
+            "type": "java",
+            "request": "launch",
+            "mainClass": "com.videogamejournal.api.ApiApplication",
+            "projectName": "api",
+            "cwd": "${workspaceFolder}/api",
+            // MSSQL_SA_PASSWORD and DB_NAME, read by application.properties
+            "envFile": "${workspaceFolder}/.env",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "UI: Vite + Chrome",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "npm run dev",
+            "cwd": "${workspaceFolder}/ui",
+            // Vite colours the URL it prints, so match the line and hardcode the address
+            "serverReadyAction": {
+                "action": "debugWithChrome",
+                "pattern": "Local:.+",
+                "uriFormat": "http://localhost:5173",
+                "webRoot": "${workspaceFolder}/ui",
+                "killOnServerStop": true
+            }
+        },
+        {
+            // For when the Vite dev server is already running in a terminal
+            "name": "UI: Chrome only",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/ui"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Full stack: API + UI",
+            "configurations": [
+                "API: Spring Boot",
+                "UI: Vite + Chrome"
+            ],
+            "stopAll": true
+        }
+    ]
+}

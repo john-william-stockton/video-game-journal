@@ -1,0 +1,40 @@
+{
+    "name": "mssql-spring-react",
+    "dockerComposeFile": [
+        "../docker-compose.yml",
+        "docker-compose.yml"
+    ],
+    "service": "dev",
+    "runServices": [
+        "db",
+        "dev"
+    ],
+    "workspaceFolder": "/workspaces/project",
+    "features": {
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "21",
+            "installMaven": "true"
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "22"
+        }
+    },
+    "forwardPorts": [
+        5173,
+        8080,
+        1433
+    ],
+    "postCreateCommand": "cd ui && npm install",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack",
+                "vmware.vscode-spring-boot",
+                "ms-mssql.mssql",
+                "dbaeumer.vscode-eslint",
+                "anthropic.claude-code",
+                "openai.chatgpt"
+            ]
+        }
+    }
+}
